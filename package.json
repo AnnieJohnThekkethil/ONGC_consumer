@@ -1,0 +1,28 @@
+{
+  "name": "kafka",
+  "version": "1.0.0",
+  "description": "Kafka consumer to Postgres in TypeScript",
+  "scripts": {
+    "kafka:up": "docker compose up -d",
+    "kafka:down": "docker compose down -v",
+    "build": "tsc -p tsconfig.json",
+    "consumer:replay": "node -e \"process.env.ASSET_MILESTONES_GROUP_ID='asset-milestones-replay-' + Date.now(); require('ts-node/register'); require('./src/consumer.ts');\"",
+    "start": "node dist/consumer.js",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "kafkajs": "^2.2.4",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/pg": "^8.15.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
